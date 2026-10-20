@@ -1,18 +1,19 @@
 # ============================================================
-# 05_perte_climatique.R : perte climatique annuelle
-# (secheresse -> reconnaissance -> cout), calibration sur le pont ONRN
-# Depend uniquement des fichiers enregistres dans output/etape0
-# Sorties : calibrage_perte_climatique.rds, scenarios_perte_climatique.rds
+# 05_perte_climatique.R
+# Annual climate loss (drought -> recognition -> cost),
+# calibrated on the ONRN cost bridge
+# Depends only on the files saved in output/etape0
+# Outputs: calibrage_perte_climatique.rds, scenarios_perte_climatique.rds
 # ============================================================
 library(dplyr); library(tidyr); library(stringr); library(lubridate)
 
-dir_out <- "C:/Users/OumyDIONE/Documents/output/etape0"
+dir_out <- file.path("output", "etape0")
 base  <- readRDS(file.path(dir_out, "base_evenements_couts.rds"))
 Zj    <- readRDS(file.path(dir_out, "anomalies_communales_jul_dec_2000_2025.rds"))
 w     <- readRDS(file.path(dir_out, "poids_cout_communes.rds"))
 mod   <- readRDS(file.path(dir_out, "modeles_communaux_depot_reconnaissance.rds"))
 panel <- readRDS(file.path(dir_out, "panel_commune_annee_alea.rds"))
-cat("Zj :", dim(Zj), "| communes ponderees :", nrow(w), "| panel :", nrow(panel), "\n")
+cat("Zj:", dim(Zj), "| weighted communes:", nrow(w), "| panel:", nrow(panel), "\n")
 
 # ------------------------------------------------------------
 # 1. Pont ONRN : cout annuel C_mid (Md EUR), arretes reconnus 1995-2021
