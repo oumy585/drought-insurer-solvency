@@ -84,7 +84,7 @@ saveRDS(par_reg, file.path(dir_out, "parametres_regimes_reconnaissance.rds"))
 f_swi <- file.path("data", "swi", "SWI_2000_2025.csv")
 f_map <- file.path("data", "swi", "mapping_SWI_communes_weighted.csv")
 f_evt <- file.path("data", "catnat", "CatNat_drought_events_SWI.xlsx")
-f_py  <- "build_swi_communal.py"   # script that builds the commune-grid cell mapping
+f_py  <- "build_swi_communal.py"   # script that builds the event-level SWI minimum used for validation
 stopifnot(file.exists(f_swi), file.exists(f_map), file.exists(f_evt), file.exists(f_py))
 
 cat("--- SWI by grid cell: first 4 lines ---\n");  cat(readLines(f_swi, n = 4), sep = "\n")
