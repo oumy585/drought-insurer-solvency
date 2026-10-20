@@ -66,7 +66,7 @@ Sources:
 
 If you use this code, please cite the paper and the archived version of this repository:
 
-> Dione, O. (2026). *Code for "When Does Drought Risk Matter for Insurer Solvency? A Portfolio-Structure Perspective"*. Zenodo. https://doi.org/10.5281/zenodo.XXXXXXX
+> Dione, O. (2026). *Code for "When Does Drought Risk Matter for Insurer Solvency? A Portfolio-Structure Perspective"* (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23505966
 
 ## Licence
 
