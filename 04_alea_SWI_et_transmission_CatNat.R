@@ -1,7 +1,10 @@
 # ============================================================
 # 04_alea_SWI_et_transmission_CatNat.R
-# Drought hazard index (communal SWI)
-# Depends only on: SWI_communal_mensuel.rds
+# Drought hazard index (communal SWI), regime-break checks and
+# commune-year request/recognition models.
+# Inputs (output/etape0): SWI_communal_mensuel.rds (script 02),
+#   serie_reconnaissance_hors_annuelle.rds (script 02),
+#   base_evenements_couts.rds and serie_nationale_annuelle.rds (script 01).
 # ============================================================
 library(dplyr); library(tidyr); library(stringr)
 
