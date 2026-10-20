@@ -18,7 +18,7 @@ f_sp         <- file.path("data", "onrn",   "ONRN_SsurP_SECH_9521.xlsx")
 f_catnat     <- file.path("data", "catnat", "Arretes-CatNat-commune-1.xlsx")
 f_carac      <- file.path("data", "catnat", "CatNat_drought_final_analysis.xlsx")
 
-dir_out <- "C:/Users/OumyDIONE/Documents/output/etape0"     # chemin complet, utilise pour toutes les sorties
+dir_out <- file.path("output", "etape0")   # all outputs are written here
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 stopifnot(file.exists(f_cout), file.exists(f_cout_moyen), file.exists(f_freq),
