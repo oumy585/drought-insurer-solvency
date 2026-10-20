@@ -1,21 +1,19 @@
 # ============================================================
-# 07_assemblage.R : perte totale = financiere + climatique
-# Depend uniquement des fichiers enregistres dans output/macro et output/etape0
-# Script consolide : plus de blocs dupliques, VaR et ES calcules dans la
-# meme boucle, tout objet utilise est defini avant son usage.
-# NON teste sous R par l'assistant (pas d'interpreteur disponible ici) :
-# relire une fois, signaler tout message d'erreur complet.
+# 07_assemblage.R
+# Total loss = financial + climate; VaR/ES, grid of configurations,
+# tables and figures.
+# Depends only on files saved in output/macro and output/etape0.
+# Run from the repository root (see README for the data/ layout).
 # ============================================================
 library(dplyr); library(ggplot2)
 
-dir_macro <- "C:/Users/OumyDIONE/Documents/output/macro"
-dir_out   <- "C:/Users/OumyDIONE/Documents/output/etape0"
+dir_macro <- file.path("output", "macro")
+dir_out   <- file.path("output", "etape0")
 
 fin   <- readRDS(file.path(dir_macro, "simulation_financiere_reference.rds"))
 clim  <- readRDS(file.path(dir_out, "scenarios_perte_climatique.rds"))
 mod   <- readRDS(file.path(dir_out, "modeles_communaux_depot_reconnaissance.rds"))
 panel <- readRDS(file.path(dir_out, "panel_commune_annee_alea.rds"))
-
 cat("Module financier :", fin$config_sim, "\n")
 cat("  n =", length(fin$L_net), "| moyenne =", round(mean(fin$L_net), 1), "| sd =", round(sd(fin$L_net), 1), "\n")
 cat("\nModule climatique : scenarios =", names(clim$Cp), "\n")
