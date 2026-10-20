@@ -1,19 +1,19 @@
 # ============================================================
-# 04_indice_alea.R : indice d'alea de secheresse (SWI communal)
-# Depend uniquement de : SWI_communal_mensuel.rds
+# 04_alea_SWI_et_transmission_CatNat.R
+# Drought hazard index (communal SWI)
+# Depends only on: SWI_communal_mensuel.rds
 # ============================================================
 library(dplyr); library(tidyr); library(stringr)
 
-dir_out <- "C:/Users/OumyDIONE/Documents/output/etape0"
+dir_out <- file.path("output", "etape0")
 print(list.files(dir_out))
 
 f_swi_rds <- file.path(dir_out, "SWI_communal_mensuel.rds")
-if (!file.exists(f_swi_rds)) stop("SWI_communal_mensuel.rds introuvable : lancer d'abord le bloc de sauvegarde")
+if (!file.exists(f_swi_rds)) stop("SWI_communal_mensuel.rds not found: run 02_construction_alea_SWI.R first")
 
 B <- readRDS(f_swi_rds)
-cat("SWI communal :", nrow(B), "communes x", ncol(B), "mois |",
-    colnames(B)[1], "->", colnames(B)[ncol(B)], "| NA :", sum(is.na(B)), "\n")
-
+cat("Communal SWI:", nrow(B), "communes x", ncol(B), "months |",
+    colnames(B)[1], "->", colnames(B)[ncol(B)], "| NA:", sum(is.na(B)), "\n")
 #################################################################### Monthly swi 
 nat <- data.frame(mois = colnames(B),
                   moyenne  = colMeans(B),
