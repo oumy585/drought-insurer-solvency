@@ -1,22 +1,22 @@
 # ============================================================
 # 01_preparation_CatNat_ONRN_couts.R
-# Preparation des bases ONRN + CatNat (secheresse) et modele de cout par arrete
-# Sorties : base_evenements_couts.rds/.csv, serie_nationale_annuelle.rds/.csv
-# Script NON teste sous R (pas d'interpreteur disponible) : relire une fois avant
-# execution complete, et signaler tout message d'erreur complet en cas de souci.
+# Preparation of the ONRN and CatNat (drought) databases and
+# per-order cost model
+# Outputs: base_evenements_couts.rds/.csv, serie_nationale_annuelle.rds/.csv
+# Run from the repository root (see README for the expected data/ layout).
 # ============================================================
 library(readxl); library(dplyr); library(tidyr); library(stringr); library(lubridate)
 library(survival)
 
 # ------------------------------------------------------------
-# CONFIG (a adapter)
+# CONFIG (adapt if needed)
 # ------------------------------------------------------------
-f_cout       <- "C:/Users/OumyDIONE/Downloads/ONRN_CoutCumu_SECH_9521.xlsx"
-f_cout_moyen <- "C:/Users/OumyDIONE/Downloads/ONRN_CoutMoyen_SECH_9521.xlsx"
-f_freq       <- "C:/Users/OumyDIONE/Downloads/ONRN_Frequence_SECH_9521.xlsx"
-f_sp         <- "C:/Users/OumyDIONE/Downloads/ONRN_SsurP_SECH_9521.xlsx"
-f_catnat     <- "D:/travaux recherche/Catnat/traité par comunne/Arretés-CatNat-commune-1.xlsx"
-f_carac      <- "C:/Users/OumyDIONE/Downloads/Drought_risk_review/DATA/Data_merging/CatNat_drought_final_analysis.xlsx"
+f_cout       <- file.path("data", "onrn",   "ONRN_CoutCumu_SECH_9521.xlsx")
+f_cout_moyen <- file.path("data", "onrn",   "ONRN_CoutMoyen_SECH_9521.xlsx")
+f_freq       <- file.path("data", "onrn",   "ONRN_Frequence_SECH_9521.xlsx")
+f_sp         <- file.path("data", "onrn",   "ONRN_SsurP_SECH_9521.xlsx")
+f_catnat     <- file.path("data", "catnat", "Arretes-CatNat-commune-1.xlsx")
+f_carac      <- file.path("data", "catnat", "CatNat_drought_final_analysis.xlsx")
 
 dir_out <- "C:/Users/OumyDIONE/Documents/output/etape0"     # chemin complet, utilise pour toutes les sorties
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
