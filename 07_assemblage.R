@@ -7,7 +7,7 @@
 # ============================================================
 library(dplyr); library(ggplot2)
 
-dir_macro <- file.path("output", "macro")
+dir_macro <- file.path("data", "macro")
 dir_out   <- file.path("output", "etape0")
 
 fin   <- readRDS(file.path(dir_macro, "simulation_financiere_reference.rds"))
@@ -465,7 +465,6 @@ cat("\nScript 07_assemblage.R termine. Fichiers de sortie dans", dir_out, "\n")
 ######################################## Accesoires 
 library(ggplot2)
 
-dir_out <- "C:/Users/OumyDIONE/Documents/output/etape0"
 dd <- readRDS(file.path(dir_out, "table_annuelle_reconnaissance_modele.rds"))
 dd$haut <- dd$jul_dec > quantile(dd$jul_dec, .75)   # dernier quartile
 
