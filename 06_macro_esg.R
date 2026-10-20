@@ -1,10 +1,13 @@
 
 # ============================================================
-# 06_macro_esg.R : ESG macro-financier (Module 1), sans climat
-# Point de depart : fichier corrige (CAC40 remis dans le bon sens)
+# 06_macro_esg.R: macro-financial ESG (Module 1), without climate
+# Starting point: corrected file (CAC 40 sign fixed)
+# The reference simulation used in the paper is the block with
+# block_length = 6, B = 10,000, seed = 2028 (section "reference");
+# the other runs are exploratory and robustness checks.
 # ============================================================
 library(dplyr); library(ahead)
-dir_macro <- "C:/Users/OumyDIONE/Documents/output/macro"
+dir_macro <- file.path("data", "macro")   # input ESG file; outputs are also written here
 esg <- readRDS(file.path(dir_macro, "ESG_data_2000_2024_CAC40corrige.rds"))
 vars <- c("CAC40", "IPI_growth", "Inflation", "ShortRate", "LongRate")
 stopifnot(!is.unsorted(esg$time), nrow(esg) == 300, !anyNA(esg[vars]))
